@@ -14,7 +14,7 @@
       font-family:"Poppins", sans-serif;
       color:#fff;
       overflow:hidden;
-      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      background: radial-gradient(circle at top, #004e92, #000428);
     }
 
     /* Background Partikel */
@@ -30,32 +30,42 @@
       z-index:1;
       text-align:center;
       padding:40px 20px;
-      background:rgba(255,255,255,0.05);
+      background:rgba(255,255,255,0.08);
       border-radius:20px;
       backdrop-filter:blur(12px);
-      box-shadow:0 0 40px rgba(0,255,234,0.3);
+      box-shadow:0 0 40px rgba(0,180,255,0.4);
       animation: fadeIn 1.5s ease-in-out;
       max-width: 800px;
       width: 90%;
     }
 
+    .logo {
+      width:90px;
+      height:90px;
+      margin-bottom:15px;
+      border-radius:50%;
+      object-fit:contain;
+      box-shadow:0 0 18px rgba(0,180,255,0.7);
+      animation: pulse 3s infinite;
+    }
+
     h1 {
       font-size:2rem;
       margin-bottom:10px;
-      background: linear-gradient(90deg,#00ffe0,#00ff95,#00aaff);
+      background: linear-gradient(90deg,#00c6ff,#0072ff);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      text-shadow:0 0 18px rgba(0,255,200,0.7);
+      text-shadow:0 0 18px rgba(0,180,255,0.7);
     }
 
     h2 {
       font-size:1.2rem;
       margin-bottom:15px;
-      color:#eee;
+      color:#cceaff;
     }
 
     p {
-      color:#ddd;
+      color:#e6f7ff;
       margin-bottom:20px;
       font-size:0.95rem;
     }
@@ -68,35 +78,35 @@
       flex-wrap: wrap;
     }
     .time-box {
-      background:rgba(0,0,0,0.5);
+      background:rgba(0,0,40,0.5);
       padding:14px;
       border-radius:12px;
       min-width:70px;
       font-size:1rem;
-      box-shadow:0 0 12px rgba(0,255,200,0.6);
+      box-shadow:0 0 12px rgba(0,180,255,0.6);
     }
     .time-box span {
       display:block;
       font-size:0.75rem;
       margin-top:4px;
-      color:#aaa;
+      color:#b3e0ff;
     }
 
     .status {
       display:inline-block;
       padding:12px 28px;
       border-radius:40px;
-      background: linear-gradient(135deg,#ff00cc,#3333ff);
+      background: linear-gradient(135deg,#00c6ff,#0072ff);
       font-weight:bold;
       font-size:1rem;
-      box-shadow:0 0 25px rgba(255,0,200,0.6);
+      box-shadow:0 0 25px rgba(0,180,255,0.7);
       animation: pulse 2s infinite;
     }
 
     footer {
       margin-top:20px;
       font-size:0.8rem;
-      color:#aaa;
+      color:#a9cde8;
     }
 
     @keyframes fadeIn {
@@ -106,20 +116,14 @@
 
     @keyframes pulse {
       0%,100% { transform:scale(1);}
-      50% { transform:scale(1.08);}
+      50% { transform:scale(1.05);}
     }
 
-    /* 🔹 Responsif */
+    /* Responsif */
     @media (max-width: 600px) {
-      .container {
-        padding: 25px 15px;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
-      h2 {
-        font-size: 1rem;
-      }
+      .container { padding: 25px 15px; }
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1rem; }
       .time-box {
         min-width: 60px;
         padding: 10px;
@@ -129,6 +133,10 @@
         font-size: 0.9rem;
         padding: 10px 20px;
       }
+      .logo {
+        width:70px;
+        height:70px;
+      }
     }
   </style>
 </head>
@@ -136,6 +144,7 @@
   <canvas id="stars"></canvas>
 
   <div class="container">
+    <img src="logo1.png" alt="Logo Club Wirausaha UNUJA" class="logo">
     <h1>OPREC CLUB WIRAUSAHA UNUJA</h1>
     <h2>Nantikan Pembukaan Resmi</h2>
     <p>Open Recruitment dimulai pada:</p>
