@@ -63,7 +63,7 @@ p { color:#cceaff; margin-bottom:22px; font-size:1rem; }
 .countdown {
   display:flex;
   justify-content:center;
-  gap:18px;
+  gap:10px;
   margin:25px 0;
   flex-wrap: wrap;
 }
@@ -211,3 +211,4 @@ function updateCountdown() {
 }
 updateCountdown(); // tampil langsung
 setInterval(updateCountdown,1000);
+
