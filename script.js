@@ -31,7 +31,7 @@ video.bg-video {
   padding:50px 30px;
   background: rgba(255,255,255,0.06);
   border-radius:24px;
-  backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(px) saturate(180%);
   box-shadow: 0 0 40px rgba(180,180,180,0.4);
   animation: fadeIn 1.5s ease-in-out;
   max-width: 850px;
@@ -211,4 +211,3 @@ function updateCountdown() {
 }
 updateCountdown(); // tampil langsung
 setInterval(updateCountdown,1000);
-
