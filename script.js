@@ -3,47 +3,65 @@ const style = document.createElement("style");
 style.textContent = `
 * {margin:0; padding:0; box-sizing:border-box;}
 body {
-  height:100vh; 
-  display:flex; 
-  justify-content:center; 
-  align-items:center; 
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   font-family:"Poppins", sans-serif;
   color:#fff;
   overflow:hidden;
-  background: radial-gradient(circle at top, #004e92, #000428);
 }
-canvas {
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:0;
+
+/* ===== Video Background ===== */
+video.bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.65) blur(2px);
 }
+
+/* ===== Glass Container ===== */
 .container {
   position:relative;
   z-index:1;
   text-align:center;
-  padding:40px 20px;
-  background:rgba(255,255,255,0.08);
-  border-radius:20px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 0 40px rgba(0,180,255,0.4);
+  padding:50px 30px;
+  background: rgba(255,255,255,0.06);
+  border-radius:24px;
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 0 50px rgba(0,180,255,0.4), inset 0 0 30px rgba(255,255,255,0.05);
   animation: fadeIn 1.5s ease-in-out;
-  max-width: 800px;
-  width: 90%;
+  max-width: 850px;
+  width: 92%;
 }
+
+/* ===== Logo (tanpa bayangan) ===== */
 .logo {
-  width:90px;
-  height:90px;
-  margin-bottom:15px;
+  width:100px;
+  height:100px;
+  margin-bottom:20px;
   border-radius:50%;
   object-fit:contain;
-  box-shadow:0 0 18px rgba(0,180,255,0.7);
   animation: pulse 3s infinite;
 }
+.logo::after {
+  content:"";
+  position:absolute;
+  top:-20px; left:50%;
+  transform: translateX(-50%);
+  width:140px; height:140px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(0,200,255,0.35), transparent 70%);
+  z-index:-1;
+}
+
+/* ===== Headings ===== */
 h1 {
-  font-size:2rem;
-  margin-bottom:10px;
-  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  font-size:2.2rem;
+  margin-bottom:12px;
+  background: linear-gradient(90deg,#00f0ff,#0072ff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   text-shadow:0 0 18px rgba(0,180,255,0.7);
@@ -51,50 +69,73 @@ h1 {
 h2 {
   font-size:1.2rem;
   margin-bottom:15px;
-  color:#cceaff;
+  color:#d6f2ff;
 }
 p {
-  color:#e6f7ff;
-  margin-bottom:20px;
-  font-size:0.95rem;
+  color:#cceaff;
+  margin-bottom:22px;
+  font-size:1rem;
 }
+
+/* ===== Countdown ===== */
 .countdown {
   display:flex;
   justify-content:center;
-  gap:12px;
-  margin-bottom:20px;
+  gap:18px;
+  margin: 25px 0;
   flex-wrap: wrap;
 }
 .time-box {
-  background:rgba(0,0,40,0.5);
-  padding:14px;
-  border-radius:12px;
-  min-width:70px;
-  font-size:1rem;
-  box-shadow:0 0 12px rgba(0,180,255,0.6);
+  background:rgba(0,0,60,0.55);
+  padding:16px 20px;
+  border-radius:16px;
+  min-width:80px;
+  font-size:1.1rem;
+  font-weight:600;
+  letter-spacing:1px;
+  box-shadow:0 0 18px rgba(0,200,255,0.5);
+  border:1px solid rgba(0,200,255,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.time-box:hover {
+  transform: scale(1.1);
+  box-shadow:0 0 28px rgba(0,200,255,0.9);
 }
 .time-box span {
   display:block;
-  font-size:0.75rem;
-  margin-top:4px;
+  font-size:0.8rem;
+  margin-top:6px;
   color:#b3e0ff;
+  font-weight:400;
 }
+
+/* ===== Status Button ===== */
 .status {
   display:inline-block;
-  padding:12px 28px;
-  border-radius:40px;
-  background: linear-gradient(135deg,#00c6ff,#0072ff);
+  padding:14px 36px;
+  border-radius:50px;
+  background: linear-gradient(135deg,#00f0ff,#0072ff);
   font-weight:bold;
-  font-size:1rem;
-  box-shadow:0 0 25px rgba(0,180,255,0.7);
-  animation: pulse 2s infinite;
+  font-size:1.05rem;
+  letter-spacing:0.5px;
+  box-shadow:0 0 30px rgba(0,200,255,0.8);
+  animation: pulse 2.5s infinite;
+  transition: all 0.3s ease;
 }
+.status:hover {
+  transform: scale(1.05);
+  box-shadow:0 0 45px rgba(0,200,255,1);
+}
+
+/* ===== Footer ===== */
 footer {
-  margin-top:20px;
+  margin-top:22px;
   font-size:0.8rem;
   color:#a9cde8;
   text-align:center;
 }
+
+/* ===== Animations ===== */
 @keyframes fadeIn {
   from{opacity:0; transform:scale(0.9);}
   to{opacity:1; transform:scale(1);}
@@ -103,61 +144,56 @@ footer {
   0%,100% { transform:scale(1);}
   50% { transform:scale(1.05);}
 }
+
+/* ===== Responsive ===== */
 @media (max-width: 600px) {
-  .container { padding: 25px 15px; }
-  h1 { font-size: 1.5rem; }
+  .container { padding: 28px 18px; }
+  h1 { font-size: 1.6rem; }
   h2 { font-size: 1rem; }
   .time-box {
-    min-width: 60px;
-    padding: 10px;
-    font-size: 0.9rem;
+    min-width: 65px;
+    padding: 12px;
+    font-size: 0.95rem;
   }
   .status {
     font-size: 0.9rem;
-    padding: 10px 20px;
+    padding: 10px 22px;
   }
   .logo {
-    width:70px;
-    height:70px;
+    width:75px;
+    height:75px;
   }
   footer {
     font-size:0.7rem;
   }
 }
-a.backBtn {
-  position:absolute;
-  top:15px; left:15px;
-  padding:8px 14px;
-  background:rgba(0,0,0,0.5);
-  color:#fff;
-  border-radius:6px;
-  font-size:0.9rem;
-  text-decoration:none;
-  z-index:2;
-}
 `;
 document.head.appendChild(style);
 
-// ============= Buat Elemen HTML Lewat JS =============
-const canvas = document.createElement("canvas");
-canvas.id = "stars";
-document.body.appendChild(canvas);
+// ============= Tambah Video Background =============
+const video = document.createElement("video");
+video.src = "nadia.mp4";
+video.autoplay = true;
+video.loop = true;
+video.muted = true; // biar autoplay jalan di browser
+video.playsInline = true;
+video.className = "bg-video";
+document.body.appendChild(video);
 
+// ============= Buat Elemen HTML Lewat JS =============
 const container = document.createElement("div");
 container.className = "container";
 document.body.appendChild(container);
 
-const backBtn = document.createElement("a");
-backBtn.href = "https://cwu.vercel.app/";
-backBtn.textContent = "←";
-backBtn.className = "backBtn";
-document.body.appendChild(backBtn);
+const logoWrapper = document.createElement("div");
+logoWrapper.style.position = "relative";
+container.appendChild(logoWrapper);
 
 const logo = document.createElement("img");
 logo.src = "logo1.png";
 logo.alt = "Logo Club Wirausaha UNUJA";
 logo.className = "logo";
-container.appendChild(logo);
+logoWrapper.appendChild(logo);
 
 const h1 = document.createElement("h1");
 h1.textContent = "OPREC CLUB WIRAUSAHA UNUJA";
@@ -213,39 +249,3 @@ function updateCountdown() {
   }
 }
 setInterval(updateCountdown,1000);
-
-// ============= Background Partikel Bintang =============
-const ctx = canvas.getContext("2d");
-let w,h,stars=[];
-function init(){
-  w=canvas.width=window.innerWidth;
-  h=canvas.height=window.innerHeight;
-  stars=[];
-  for(let i=0;i<120;i++){
-    stars.push({
-      x:Math.random()*w,
-      y:Math.random()*h,
-      radius:Math.random()*1.5,
-      dx:(Math.random()-0.5)*0.5,
-      dy:(Math.random()-0.5)*0.5
-    });
-  }
-}
-function animate(){
-  ctx.clearRect(0,0,w,h);
-  ctx.fillStyle="white";
-  stars.forEach(star=>{
-    ctx.beginPath();
-    ctx.arc(star.x,star.y,star.radius,0,Math.PI*2);
-    ctx.fill();
-    star.x+=star.dx;
-    star.y+=star.dy;
-    if(star.x<0||star.x>w) star.dx*=-1;
-    if(star.y<0||star.y>h) star.dy*=-1;
-  });
-  requestAnimationFrame(animate);
-}
-window.addEventListener("resize",init);
-init();
-animate();
-
