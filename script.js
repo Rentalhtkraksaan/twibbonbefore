@@ -148,7 +148,7 @@ container.className = "container";
 document.body.appendChild(container);
 
 const backBtn = document.createElement("a");
-backBtn.href = "p.html";
+backBtn.href = "https://cwu.vercel.app/";
 backBtn.textContent = "←";
 backBtn.className = "backBtn";
 document.body.appendChild(backBtn);
@@ -248,3 +248,4 @@ function animate(){
 window.addEventListener("resize",init);
 init();
 animate();
+
