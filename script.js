@@ -10,20 +10,20 @@ body {
   font-family:"Poppins", sans-serif;
   color:#fff;
   overflow:hidden;
-  background: linear-gradient(135deg,#0f172a,#1e3a8a); /* fallback kalau video gagal */
+  background: linear-gradient(135deg,#0f172a,#1e3a8a);
 }
 
-/* ===== Video Background ===== */
+/* Video Background */
 video.bg-video {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  z-index: -2;
+  top:0; left:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:-2;
   filter: brightness(0.65) blur(2px);
 }
 
-/* ===== Glass Container ===== */
+/* Glass Container */
 .container {
   position:relative;
   z-index:1;
@@ -38,7 +38,7 @@ video.bg-video {
   width: 92%;
 }
 
-/* ===== Logo (tanpa bayangan & animasi) ===== */
+/* Logo */
 .logo {
   width:100px;
   height:100px;
@@ -47,7 +47,7 @@ video.bg-video {
   object-fit:contain;
 }
 
-/* ===== Headings ===== */
+/* Headings */
 h1 {
   font-size:2.2rem;
   margin-bottom:12px;
@@ -56,23 +56,15 @@ h1 {
   -webkit-text-fill-color:transparent;
   text-shadow:0 0 12px rgba(180,180,180,0.7);
 }
-h2 {
-  font-size:1.2rem;
-  margin-bottom:15px;
-  color:#d6f2ff;
-}
-p {
-  color:#cceaff;
-  margin-bottom:22px;
-  font-size:1rem;
-}
+h2 { font-size:1.2rem; margin-bottom:15px; color:#d6f2ff; }
+p { color:#cceaff; margin-bottom:22px; font-size:1rem; }
 
-/* ===== Countdown ===== */
+/* Countdown */
 .countdown {
   display:flex;
   justify-content:center;
   gap:18px;
-  margin: 25px 0;
+  margin:25px 0;
   flex-wrap: wrap;
 }
 .time-box {
@@ -99,7 +91,7 @@ p {
   font-weight:400;
 }
 
-/* ===== Status Button ===== */
+/* Status Button */
 .status {
   display:inline-block;
   padding:14px 36px;
@@ -116,7 +108,7 @@ p {
   box-shadow:0 0 35px rgba(180,180,180,1);
 }
 
-/* ===== Footer ===== */
+/* Footer */
 footer {
   margin-top:22px;
   font-size:0.8rem;
@@ -124,48 +116,36 @@ footer {
   text-align:center;
 }
 
-/* ===== Animations ===== */
+/* Animations */
 @keyframes fadeIn {
   from{opacity:0; transform:scale(0.9);}
   to{opacity:1; transform:scale(1);}
 }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 600px) {
   .container { padding: 28px 18px; }
   h1 { font-size: 1.6rem; }
   h2 { font-size: 1rem; }
-  .time-box {
-    min-width: 65px;
-    padding: 12px;
-    font-size: 0.95rem;
-  }
-  .status {
-    font-size: 0.9rem;
-    padding: 10px 22px;
-  }
-  .logo {
-    width:75px;
-    height:75px;
-  }
-  footer {
-    font-size:0.7rem;
-  }
+  .time-box { min-width:65px; padding:12px; font-size:0.95rem; }
+  .status { font-size:0.9rem; padding:10px 22px; }
+  .logo { width:75px; height:75px; }
+  footer { font-size:0.7rem; }
 }
 `;
 document.head.appendChild(style);
 
-// ============= Tambah Video Background =============
+// ============= Video Background =============
 const video = document.createElement("video");
-video.src = "nadia.mp4";
+video.src = "nadia.mp4"; // pastikan file kecil atau di-compress
 video.autoplay = true;
 video.loop = true;
-video.muted = true; 
+video.muted = true;
 video.playsInline = true;
 video.className = "bg-video";
 document.body.appendChild(video);
 
-// ============= Buat Elemen HTML Lewat JS =============
+// ============= HTML via JS =============
 const container = document.createElement("div");
 container.className = "container";
 document.body.appendChild(container);
@@ -229,4 +209,5 @@ function updateCountdown() {
     countdown.innerHTML = "<div class='status'>✨ Oprec Sudah Dibuka!</div>";
   }
 }
+updateCountdown(); // tampil langsung
 setInterval(updateCountdown,1000);
