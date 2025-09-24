@@ -3,163 +3,172 @@ const style = document.createElement("style");
 style.textContent = `
 * {margin:0; padding:0; box-sizing:border-box;}
 body {
-  height:100vh; 
-  display:flex; 
-  justify-content:center; 
-  align-items:center; 
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   font-family:"Poppins", sans-serif;
   color:#fff;
   overflow:hidden;
-  background: linear-gradient(135deg, #0f172a, #1e3a8a); /* fallback gradient */
+  background: linear-gradient(135deg,#0f172a,#1e3a8a); /* fallback kalau video gagal */
 }
+
+/* ===== Video Background ===== */
 video.bg-video {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  z-index: -1;
+  z-index: -2;
+  filter: brightness(0.65) blur(2px);
 }
+
+/* ===== Glass Container ===== */
 .container {
   position:relative;
   z-index:1;
   text-align:center;
-  padding:40px 20px;
-  background:rgba(0,0,0,0.5);
-  border-radius:20px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 0 25px rgba(180,180,180,0.4); /* abu-abu lembut */
+  padding:50px 30px;
+  background: rgba(255,255,255,0.06);
+  border-radius:24px;
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 0 40px rgba(180,180,180,0.4);
   animation: fadeIn 1.5s ease-in-out;
-  max-width: 800px;
-  width: 90%;
+  max-width: 850px;
+  width: 92%;
 }
+
+/* ===== Logo (tanpa bayangan & animasi) ===== */
 .logo {
-  width:90px;
-  height:90px;
-  margin-bottom:15px;
+  width:100px;
+  height:100px;
+  margin-bottom:20px;
   border-radius:50%;
   object-fit:contain;
-  box-shadow:0 0 12px rgba(150,150,150,0.6); /* bayangan abu-abu */
 }
+
+/* ===== Headings ===== */
 h1 {
-  font-size:2rem;
-  margin-bottom:10px;
-  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  font-size:2.2rem;
+  margin-bottom:12px;
+  background: linear-gradient(90deg,#00f0ff,#0072ff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  text-shadow:0 0 10px rgba(150,150,150,0.7);
+  text-shadow:0 0 12px rgba(180,180,180,0.7);
 }
 h2 {
   font-size:1.2rem;
   margin-bottom:15px;
-  color:#cceaff;
+  color:#d6f2ff;
 }
 p {
-  color:#e6f7ff;
-  margin-bottom:20px;
-  font-size:0.95rem;
+  color:#cceaff;
+  margin-bottom:22px;
+  font-size:1rem;
 }
+
+/* ===== Countdown ===== */
 .countdown {
   display:flex;
   justify-content:center;
-  gap:12px;
-  margin-bottom:20px;
+  gap:18px;
+  margin: 25px 0;
   flex-wrap: wrap;
 }
 .time-box {
-  background:rgba(0,0,40,0.5);
-  padding:14px;
-  border-radius:12px;
-  min-width:70px;
-  font-size:1rem;
-  box-shadow:0 0 10px rgba(150,150,150,0.6);
+  background:rgba(0,0,60,0.55);
+  padding:16px 20px;
+  border-radius:16px;
+  min-width:80px;
+  font-size:1.1rem;
+  font-weight:600;
+  letter-spacing:1px;
+  box-shadow:0 0 15px rgba(180,180,180,0.6);
+  border:1px solid rgba(200,200,200,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.time-box:hover {
+  transform: scale(1.05);
+  box-shadow:0 0 25px rgba(180,180,180,0.9);
 }
 .time-box span {
   display:block;
-  font-size:0.75rem;
-  margin-top:4px;
+  font-size:0.8rem;
+  margin-top:6px;
   color:#b3e0ff;
+  font-weight:400;
 }
+
+/* ===== Status Button ===== */
 .status {
   display:inline-block;
-  padding:12px 28px;
-  border-radius:40px;
-  background: linear-gradient(135deg,#00c6ff,#0072ff);
+  padding:14px 36px;
+  border-radius:50px;
+  background: linear-gradient(135deg,#00f0ff,#0072ff);
   font-weight:bold;
-  font-size:1rem;
-  box-shadow:0 0 15px rgba(150,150,150,0.7);
+  font-size:1.05rem;
+  letter-spacing:0.5px;
+  box-shadow:0 0 25px rgba(180,180,180,0.7);
+  transition: all 0.3s ease;
 }
+.status:hover {
+  transform: scale(1.05);
+  box-shadow:0 0 35px rgba(180,180,180,1);
+}
+
+/* ===== Footer ===== */
 footer {
-  margin-top:20px;
+  margin-top:22px;
   font-size:0.8rem;
   color:#a9cde8;
   text-align:center;
 }
+
+/* ===== Animations ===== */
 @keyframes fadeIn {
   from{opacity:0; transform:scale(0.9);}
   to{opacity:1; transform:scale(1);}
 }
+
+/* ===== Responsive ===== */
 @media (max-width: 600px) {
-  .container { padding: 25px 15px; }
-  h1 { font-size: 1.5rem; }
+  .container { padding: 28px 18px; }
+  h1 { font-size: 1.6rem; }
   h2 { font-size: 1rem; }
   .time-box {
-    min-width: 60px;
-    padding: 10px;
-    font-size: 0.9rem;
+    min-width: 65px;
+    padding: 12px;
+    font-size: 0.95rem;
   }
   .status {
     font-size: 0.9rem;
-    padding: 10px 20px;
+    padding: 10px 22px;
   }
   .logo {
-    width:70px;
-    height:70px;
+    width:75px;
+    height:75px;
   }
   footer {
     font-size:0.7rem;
   }
 }
-a.backBtn {
-  position:absolute;
-  top:15px; left:15px;
-  padding:8px 14px;
-  background:rgba(0,0,0,0.5);
-  color:#fff;
-  border-radius:6px;
-  font-size:0.9rem;
-  text-decoration:none;
-  z-index:2;
-}
 `;
 document.head.appendChild(style);
 
-// ============= Tambah Video Background (Hybrid) =============
+// ============= Tambah Video Background =============
 const video = document.createElement("video");
 video.src = "nadia.mp4";
 video.autoplay = true;
 video.loop = true;
-video.muted = true;
+video.muted = true; 
 video.playsInline = true;
-video.poster = "cover.jpg"; // cover sementara
 video.className = "bg-video";
-
-video.addEventListener("error", () => {
-  console.warn("Video gagal dimuat, pakai background gradient.");
-  video.remove(); // fallback ke gradient
-});
-
 document.body.appendChild(video);
 
 // ============= Buat Elemen HTML Lewat JS =============
 const container = document.createElement("div");
 container.className = "container";
 document.body.appendChild(container);
-
-const backBtn = document.createElement("a");
-backBtn.href = "p.html";
-backBtn.textContent = "←";
-backBtn.className = "backBtn";
-document.body.appendChild(backBtn);
 
 const logo = document.createElement("img");
 logo.src = "logo1.png";
